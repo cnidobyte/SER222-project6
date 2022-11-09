@@ -8,8 +8,8 @@ import java.util.Random;
  *
  * Completion time: (your completion time)
  *
- * @author (your name), Acuna, Sedgewick and Wayne
- * @verison (version)
+ * @author Shota Bennett, Acuna, Sedgewick and Wayne
+ * @verison 1.1
  */
 import java.util.Random;
 
@@ -21,12 +21,12 @@ public class CompletedMerging implements MergingAlgorithms {
         //TODO: implement this!
 
         Queue<T> mergedQueue = new ListQueue<>();
-        while(!(q1.isEmpty() && q2.isEmpty())) {
+        while(!(q1.isEmpty() || q2.isEmpty())) {
             if (q1.isEmpty()) {
                 q2.dequeue();
             } else if (q2.isEmpty()) {
                 q1.dequeue();
-            } else if (q1.peek().compareTo(q2.peek()) < 0) {
+            } else if (less(q1.peek(), q2.peek())) {
                 mergedQueue.enqueue(q1.dequeue());
             } else mergedQueue.enqueue(q2.dequeue());
         }
